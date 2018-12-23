@@ -1,0 +1,80 @@
+<div>
+    <!-- ng-controller="adminLoginCtrl" -->
+    <div class="container">
+        <div class="row">
+            <div style="margin-top:170px" class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12">
+                <div class="panel panel-primary">
+
+                    <!--panel heading start-->
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">ADMIN LOGIN</h3>
+                    </div>
+                    <!-- panel heading ends -->
+
+                    <!-- panel body start -->
+                    <div class="panel-body">
+                        <!-- Login Form -->
+                        <form name="adminLogin" method="POST" ng-submit="loginFun()" novalidate autocomplete="off">
+                            <fieldset>
+                                <div class="form-group">
+                                    <!--ADMIN USER NAME -->
+                                    <label for="forUsename">USER NAME</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-user"></span>
+                                        </span>
+                                        <input type="text" name="adminUsername" class="form-control" ng-model="admin.userName" placeholder="USER NAME" autofocus required/>
+                                    </div>
+
+                                    <!-- validation for user name -->
+                                    <span class="text-danger" ng-show="adminLogin.adminUsername.$error.required && adminLogin.adminUsername.$dirty">
+                                                      Enter user name
+                                    </span>
+                                    <!-- {{adminLogin.adminUsername}} -->
+                                    <!-- <span class="text-danger"
+                                                      ng-show="adminLogin.adminUsername.$error.pattern">
+                                                      USER NAME MUST BE CONTAIN UPPERCASE AND NUMBER
+                                                </span> -->
+                                </div>
+
+                                <div class="form-group">
+                                    <!--ADMIN PASSWORd -->
+                                    <label for="forUserPaswword">PASSWORD</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                                     <span class="glyphicon glyphicon-lock"></span>
+                                        </span>
+                                        <input type="password" name="adminPassword" class="form-control" ng-model="admin.password" placeholder="PASSWORD" required/>
+                                        <!-- ng-pattern="/^(?=.*[!@#$%^&*()\-_=+`~\[\]{}?|])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,20}$/" ng-minlength="" ng-maxlength="" -->
+                                    </div>
+                                    <!-- validaation for password -->
+                                    <span class="text-danger" ng-show="adminLogin.adminPassword.$error.required && adminLogin.adminPassword.$dirty">
+                                                        Enter password
+                                                    </span>
+                                    <!-- <span class="errorMsg" ng-show="adminLogin.adminPassword.$error.minlength">
+                                                          Password should be at least 8 characters long and should contain one number,
+                                                          one character and one special character
+                                                    </span>
+                                    <span class="errorMsg" ng-show="adminLogin.adminPassword.$error.maxlength">
+                                                          PASSWORD MUST SHOULD BE ATLEAST 6-20 CHARACTERSPassword should be at least 8 characters long and should contain one number,
+                                                          one character and one special character
+                                    </span> -->
+                                    <!-- <span class="text-danger" ng-show="adminLogin.adminPassword.$error.pattern">
+                                                          Password should be at least 6 characters long and should contain one number,
+                                                          one character and one special character
+                                                    </span> -->
+
+                                </div>
+                                <button type="submit" class="btn btn-default">
+                                         <strong>GO</strong> <span class="glyphicon glyphicon-log-in"></span>
+                                    </button>
+                            </fieldset>
+                        </form>
+                        <!-- form end -->
+                    </div>
+                    <!-- panel body ends -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<div style="margin-top:10px">
+    <!-- ng-controller="dealsDetailsCtrl" -->
+    <!-- navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#mainNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <div class="nav navbar-nav">
+                    <button type="button" class="btn btn-info navbar-btn" ng-click="logoutFun()">
+                            LOG OUT  <span class="glyphicon glyphicon-log-out"></span>
+                        </button>
+                </div>
+
+                <div class="nav navbar-nav navbar-right">
+                    <button type="button" class="btn btn-info navbar-btn" ng-click="newAddDealsFun()">
+                            NEW  <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    <!-- </div> -->
+                    <!-- <div class="nav navbar-nav navbar-right"> -->
+                    <button type="button" class="btn btn-info navbar-btn" ng-click="searchDeals()">
+                            SEARCH  <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- narbar ends -->
+
+    <!--deals list  -->
+    <div class="container">
+        <div class="row">
+            <!-- searching for deals -->
+
+            <!--searching category list-->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="forCategory">Category</label>
+                        <div class="col-xs-8">
+                            <select style="width: 150px;" ng-model="searchDeals.category" class="form-control">
+                                <option ng-repeat="category in categorys">{{category}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- searching for store list -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="forStore">Store</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" ng-model="searchDeals.store" placeholder="STORE" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- searching for deals title -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="forTitle">Title</label>
+                        <div class="col-xs-8">
+                            <input class="form-control" type="text" ng-model="searchDeals.title" placeholder="TITLE OF THE DEAL" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- searching for location -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="forLocation">Location</label>
+                        <div class="col-xs-8">
+                            <input class="form-control" type="text" ng-model="searchDeals.location" placeholder="LOCATION" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Total Deals details -->
+            <div class="col-sm-12">
+                <table class="table table-striped table-hover ">
+                    <tr>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Store</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Location</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    <tr ng-repeat="deals in dealsDetails | filter : searchDeals">
+                        <td class="text-center">{{deals.category}}</td>
+                        <td class="text-center">{{deals.store}}</td>
+                        <td class="text-center">{{deals.title}}</td>
+                        <td class="text-center">{{deals.location}}</td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="editDeals(deals)">
+                                  <span class="glyphicon glyphicon-edit"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="deleteDeals(deals)">
+                                 <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Deals details list ends -->
+        </div>
+    </div>
+</div>

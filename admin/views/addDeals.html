@@ -1,0 +1,218 @@
+<div style="margin-top:10px">
+    <!-- ng-controller="addDealsCtrl" -->
+    <!-- navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- <div class="navbar-header"> -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- <a class="navbar-brand" href="#"></a> -->
+            <!-- </div> -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <!--For admin logout action  -->
+                <div class="navbar-nav">
+                    <button type="button" class="btn btn-info navbar-btn" ng-click="logoutFun()">
+                        LOG OUT <span class="glyphicon glyphicon-log-out"></span>
+                    </button>
+                </div>
+
+                <div class="nav navbar-nav navbar-right">
+                    <!-- For deals save action -->
+                    <button type="button" class="btn btn-info navbar-btn" ng-click="addDealsFun(dealsList)" ng-show="addDeals">
+                        Save <span class="glyphicon glyphicon-save"></span>
+                    </button>
+                    <!-- </div> -->
+                    <!-- <div class="nav navbar-nav navbar-right"> -->
+                    <!--For all deals inputs clear action  -->
+                    <button type="reset" class="btn btn-info navbar-btn" ng-click="reset()" ng-show="clearDeals">
+                        Clear <span class="glyphicon glyphicon-erase"></span>
+                    </button>
+                    <!-- For deals update action -->
+                    <button type="button" class="btn btn-info navbar-btn" ng-click="updateDeals(dealsList)" ng-show="update_Deals">
+                        Update 
+                    </button>
+                    <!-- For updates deals cancel action -->
+                    <button type="button" class="btn btn-info navbar-btn" ng-click="cancelUpdate()" ng-show="cancel_UpdateDeals">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar ends -->
+
+    <!-- deasl details  -->
+    <div class="container">
+        <div class="row">
+
+            <!-- for deals title -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="fortitle" class="control-label col-xs-5">TITLE</label>
+                        <div class="col-xs-7">
+                            <input type="text" name="title" ng-model="dealsList.title" placeholder="TITLE OF THE DEAL" required class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--for deals category -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forDealcategory" class="control-label col-xs-5">CATEGORY</label>
+                        <div class="col-xs-7">
+                            <select style="width: 150px;" ng-model="dealsList.category" class="form-control">
+                                <option ng-repeat="category in categorys">{{category}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--for deals description -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forDescription" class="control-label col-xs-5">DESCRIPTION</label>
+                        <div class=" col-xs-7">
+                            <textarea class="form-control" name="description" ng-model="dealsList.description" rows="5" placeholder="DESCRIPTION OF THE DEAL">
+                                </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for delas types -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forType" class="control-label col-xs-5">TYPES</label>
+                        <div class="col-xs-7">
+                            <select style="width: 150px;" ng-model="dealsList.types" class="form-control">
+                                <option ng-repeat="type in types">{{type}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for coupon code -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forCouponCode" class="control-label col-xs-5">COUPON CODE</label>
+                        <div class=" col-xs-7">
+                            <input type="text" name="couponcode" ng-model="dealsList.coupanCode" placeholder="COUPON CODE" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for location -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forLocation" class="control-label col-xs-5">LOCATION</label>
+                        <div class=" col-xs-7">
+                            <input type="text" name="location" ng-model="dealsList.location" placeholder="LOCATION" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for Url -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forUrl" class="control-label col-xs-5">URL</label>
+                        <div class="col-xs-7">
+                            <input type="url" name="url" ng-model="dealsList.url" placeholder="COMPELETE URL" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for deals status  -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forDealcategory" class="control-label col-xs-5">STATUS</label>
+                        <div class="col-xs-7">
+                            <select ng-model="dealsList.status" style="width: 150px;" class="form-control">
+                                    <option ng-repeat="status in statusList">{{status}}</option>
+                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for store -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forStore" class="control-label col-xs-5">STORE</label>
+                        <div class="col-xs-7">
+                            <input type="text" name="store" ng-model="dealsList.store" placeholder="STORE" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for deal active date(START DATE)-->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forActiveDate" class="control-label col-xs-5">ACTIVE DATE</label>
+                        <div class="col-xs-7">
+                            <input type="date" class="form-control" ng-model="dealsList.activeDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- for deal expired date(END DATE)-->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forActiveDate" class="control-label col-xs-5">EXPIRED DATE</label>
+                        <div class="col-xs-7">
+                            <input type="date" class="form-control" ng-model="dealsList.expireDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--for deals Hero image -->
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="forHeroImage" class="control-label col-xs-5">HERO IMAGE</label>
+                        <div class="col-xs-7">
+                            <input type="file" fileread="uploadme1" class="form-control" accept="image/*" placeholder="UPLOAD IMAGE " />
+                            <!-- <img src="{{uploadme}} " width="100 " height="100 " alt="Image preview... "> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for deals additional image -->
+            <div class="col-sm-6 ">
+                <div class="form-horizontal ">
+                    <div class="form-group ">
+                        <label for="forHeroImage " class="control-label col-xs-5 ">ADD ON IMAGE</label>
+                        <div class="col-xs-7 ">
+                            <input type="file" fileread="uploadme2" class="form-control" accept="image/*" multiple placeholder="UPLOAD IMAGE" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BODY CONTENT ENDS -->
+
+        </div>
+    </div>
+</div>
