@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="adminApp">
+<html lang="en" ng-app="adminApp" ng-controller="adminCtrl">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-bind="currentPageTitle"></title>
+    <link rel="icon" href="images/QC.png" type="image/gif/png" sizes="20x20">
     <base href="http://127.0.0.1:5500/admin/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- angular support files -->
-    <script src="/admin/scripts/angularScripts/angular.js"></script>
-    <script src="/admin/scripts/angularScripts/angular-route.js"></script>
+    <script src="/admin/scripts/angularScripts/angular.min.js"></script>
+    <script src="/admin/scripts/angularScripts/angular-route.min.js"></script>
     <script src="/admin/scripts/angularScripts/angular-idle.min.js"></script>
     <!-- CSS STYLE SHEET -->
-    <!-- <link href="/admin/css/stylesheet.css" rel="stylesheet"> -->
+    <link href="/admin/CSS stylesheet/stylesheet.css" rel="stylesheet">
 
-    <!--    bootstrap files -->
+    <!-- bootstrap files -->
     <link href="/admin/bootstrap/css/bootstrap-grid.css" rel="stylesheet">
     <link href="/admin/bootstrap/css/bootstrap-reboot.css" rel="styleshheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,26 +26,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.1/js/bootstrap-datepicker.min.js"></script>
 
-    <!-- script and controller js files -->
-    <script src="/admin/scripts/app.js"></script>
+    <!-- controller js files -->
+    <script src="/admin/scripts/controllers/app.js"></script>
     <script src="/admin/scripts/services/localstorag.js"></script>
-    <script src="/admin/scripts/adminLoginCtrl.js"></script>
-    <script src="/admin/scripts/dealsDetailsCtrl.js"></script>
-    <script src="/admin/scripts/addDealsCtrl.js"></script>
-    <script src="/admin/scripts/adminCtrl.js"></script>
+    <script src="/admin/scripts/controllers/adminCtrl.js"></script>
+    <script src="/admin/scripts/controllers/adminLoginCtrl.js"></script>
+    <script src="/admin/scripts/controllers/dealsDetailsCtrl.js"></script>
+    <script src="/admin/scripts/controllers/addDealsCtrl.js"></script>
+
 </head>
 
-<body ng-controller="adminCtrl">
+<body>
     <div class="container-fluid">
         <div class="row">
-
+            <div class="page-blur" ng-show="dealsDataload">
+                <div class="spinloader"></div>
+            </div>
             <!-- for body portion -->
             <div class="col-sm-12">
                 <div class="mainView" ng-view></div>
             </div>
             <!-- body end -->
-
-
         </div>
     </div>
 </body>
